@@ -1,6 +1,5 @@
 import type {
   Adapter,
-  CollectionOptions,
   GeneratedAdapter,
 } from '@payloadcms/plugin-cloud-storage/types'
 import { v2 as cloudinary, type UploadApiResponse } from 'cloudinary'
@@ -56,7 +55,7 @@ const getCloudinary = (args: CloudinaryAdapterArgs) => {
 export const cloudinaryAdapter = (args: CloudinaryAdapterArgs): Adapter => {
   const folder = args.folder ?? 'payload-media'
 
-  return ({ collection: _collection, prefix }: CollectionOptions): GeneratedAdapter => {
+  return ({ collection: _collection, prefix }): GeneratedAdapter => {
     const client = getCloudinary(args)
     const resolvedFolder = prefix ? `${folder}/${prefix}` : folder
 
